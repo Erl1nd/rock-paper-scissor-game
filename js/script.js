@@ -50,6 +50,8 @@ for (gameRound = 0; gameRound < 5; gameRound++) {
     console.log(game(playerSelection, computerSelection));
 }
 
+
+// Console will tell if the player wins, computer lose or if it is a tie.
 let whoWin;
 if (playerScore > computerScore) {
     whoWin = "Congratulations, you win!";
