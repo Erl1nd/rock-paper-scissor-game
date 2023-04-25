@@ -1,11 +1,13 @@
 
 
 let gameRound = 0;
-let playerScore = 0;
-let computerScore = 0;
 
+
+// loop until 5 rounds
 while (gameRound < 5) {
-    playerSelection = prompt("Enter weapon (rock, paper, scissors):").toLowerCase();
+    // player choice
+    let playerSelection = prompt("Enter weapon (rock, paper, scissors):").toLowerCase();
+
     // computer choice
     function getComputerChoice() {
         let randomNumber = Math.floor(Math.random() * 3) + 1;
@@ -17,6 +19,8 @@ while (gameRound < 5) {
             return "scissors"
         }
     }
+
+    // game
     function game(playerSelection, computerSelection) {
         if (playerSelection == computerSelection) {
             return `You selected ${playerSelection}. Computer selected ${getComputerChoice()}. It's a tie.`
@@ -34,6 +38,8 @@ while (gameRound < 5) {
             return `You selected ${playerSelection}. Computer selected ${getComputerChoice()}. You win.`
         }
     }
+    
+    // print in the console the roun result
     console.log(game(playerSelection, getComputerChoice()));
     gameRound++;
 }
