@@ -1,47 +1,46 @@
 
-
-let gameRound = 0;
-
-
 // loop until 5 rounds
-while (gameRound < 5) {
-    // player choice
+for (gameRound = 0; gameRound < 5; gameRound++) {
+    // player and computer choice
     let playerSelection = prompt("Enter weapon (rock, paper, scissors):").toLowerCase();
+    let computerSelection = getComputerChoice();
 
     // computer choice
     function getComputerChoice() {
         let randomNumber = Math.floor(Math.random() * 3) + 1;
+        let weapon;
         if (randomNumber == 1) {
-            return "rock";
+            weapon = "rock";
         } else if (randomNumber == 2) {
-            return "paper";
+            weapon = "paper"
         } else {
-            return "scissors"
+            weapon = "scissors"
         }
+
+        return weapon;
     }
 
     // game
     function game(playerSelection, computerSelection) {
-        if (playerSelection == computerSelection) {
-            return `You selected ${playerSelection}. Computer selected ${getComputerChoice()}. It's a tie.`
-        } else if (playerSelection == "rock" && computerSelection == "paper"){
-            return `You selected ${playerSelection}. Computer selected ${getComputerChoice()}. You lose.`
-        } else if (playerSelection == "rock" && computerSelection == "scissors") {
-            return `You selected ${playerSelection}. Computer selected ${getComputerChoice()}. You Win.`
-        } else if (playerSelection == "paper" && computerSelection == "rock") {
-            return `You selected ${playerSelection}. Computer selected ${getComputerChoice()}. You Win.`
-        } else if (playerSelection == "paper" && computerSelection == "scissors") {
-            return `You selected ${playerSelection}. Computer selected ${getComputerChoice()}. You lose.`
-        } else if (playerSelection == "scissors" && computerSelection == "rock") {
-            return `You selected ${playerSelection}. Computer selected ${getComputerChoice()}. You lose.`
-        } else if (playerSelection == "scissors" && computerSelection == "paper") {
-            return `You selected ${playerSelection}. Computer selected ${getComputerChoice()}. You win.`
+        if (playerSelection === computerSelection) {
+            return `You selected ${playerSelection}. Computer selected ${computerSelection}. It's a tie.`
+        } else if (playerSelection === "rock" && computerSelection === "paper"){
+            return `You selected ${playerSelection}. Computer selected ${computerSelection}. You lose.`
+        } else if (playerSelection === "rock" && computerSelection === "scissors") {
+            return `You selected ${playerSelection}. Computer selected ${computerSelection}. You Win.`
+        } else if (playerSelection === "paper" && computerSelection === "rock") {
+            return `You selected ${playerSelection}. Computer selected ${computerSelection}. You Win.`
+        } else if (playerSelection === "paper" && computerSelection === "scissors") {
+            return `You selected ${playerSelection}. Computer selected ${computerSelection}. You lose.`
+        } else if (playerSelection === "scissors" && computerSelection === "rock") {
+            return `You selected ${playerSelection}. Computer selected ${computerSelection}. You lose.`
+        } else if (playerSelection === "scissors" && computerSelection === "paper") {
+            return `You selected ${playerSelection}. Computer selected ${computerSelection}. You win.`
         }
     }
     
     // print in the console the roun result
-    console.log(game(playerSelection, getComputerChoice()));
-    gameRound++;
+    console.log(game(playerSelection, computerSelection));
 }
 
 
