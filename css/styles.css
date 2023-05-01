@@ -1,0 +1,105 @@
+html, body {
+    overflow: hidden;
+    font-family: 'Quicksand', sans-serif;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.field {
+    padding: 64px;
+}
+
+.computer-field {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;    
+    color: white;
+    background: #0F2027;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.player-field {
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;    
+    background: #F7971E;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #FFD200, #F7971E);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #FFD200, #F7971E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    
+}
+
+.player-choice-img, 
+.computer-choice-img {
+    width: 150px;
+    height: auto;
+}
+
+.choice-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: white;
+    width: 300px;
+    height: 300px;
+}
+
+.weapon {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    padding: 16px 32px;
+    width: 200px;
+    background: #0f0c29;  /* fallback for old browsers */
+    background: #0F2027;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    cursor: pointer;
+    color: white;
+    border: 0;
+}
+
+.btn .weapon-icon {
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.computer-weapon {
+    visibility: hidden;
+}
+
+.result-container {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    text-align: center;
+    margin: auto;
+    z-index: 5;
+    color: white;
+}
+
+.invisible {
+    visibility: hidden;
+}

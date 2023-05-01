@@ -1,69 +1,117 @@
-let playerScore = 0;
+
 let computerScore = 0;
-// loop until 5 rounds
-for (gameRound = 0; gameRound < 5; gameRound++) {
-    // player and computer choice
-    let playerSelection = prompt("Enter weapon (rock, paper, scissors):").toLowerCase();
-    let computerSelection = getComputerChoice();
+let playerScore = 0;
+let playerSelection;
+let rock = document.querySelector(".rock-btn");
+let paper = document.querySelector(".paper-btn");
+let scissors = document.querySelector(".scissors-btn");
+let result = document.querySelector(".result");
+let winner = "";
+let playAgain = document.querySelector(".play-again");
+let playerWeapon = document.querySelector(".player-weapon");
 
-    // computer choice
-    function getComputerChoice() {
-        let randomNumber = Math.floor(Math.random() * 3) + 1;
-        let weapon;
-        if (randomNumber == 1) {
-            weapon = "rock";
-        } else if (randomNumber == 2) {
-            weapon = "paper"
-        } else {
-            weapon = "scissors"
-        }
+// STEP 2: Add an event listener to the buttons that call your playRound function with the correct playerSelection every time a button is clicked. (you can keep the console.logs for this step)
+rock.addEventListener("click", function () {
+    playerSelection = "Rock"
+    document.querySelector(".player-choice-img").setAttribute("src", "./images/rock.png")
+    playRound(playerSelection, getComputerChoice());
+    console.log(playerSelection);
+});
 
-        return weapon;
+paper.addEventListener("click", function () {
+    playerSelection = "Paper"
+    document.querySelector(".player-choice-img").setAttribute("src", "./images/paper.png")
+    playRound(playerSelection, getComputerChoice());
+    console.log(playerSelection);
+});
+
+
+scissors.addEventListener("click", function () {
+    playerSelection = "Scissors"
+    document.querySelector(".player-choice-img").setAttribute("src", "./images/scissors.png")
+    playRound(playerSelection, getComputerChoice());
+    console.log(playerSelection);
+});
+
+playAgain.addEventListener("click", function() {
+    computerScore = 0;
+    playerScore = 0;
+    playerWeapon.classList.remove("invisible");
+    playAgain.classList.add("invisible");
+    document.querySelector(".computer-score").textContent = `${computerScore}`;
+    document.querySelector(".player-score").textContent = `${playerScore}`;
+    result.textContent = "";
+    document.querySelector(".computer-choice-img").setAttribute("src", "")
+    document.querySelector(".player-choice-img").setAttribute("src", "")
+})
+
+// RANDOM COMPUTER CHOICE
+function getComputerChoice() {
+    let randomNumber = Math.floor(Math.random() * 3) + 1;
+    let selection;
+    if (randomNumber == 1) {
+        document.querySelector(".computer-choice-img").setAttribute("src", "./images/rock.png")
+        return selection = "Rock";
+    } else if (randomNumber == 2) {
+        document.querySelector(".computer-choice-img").setAttribute("src", "./images/paper.png")
+        return selection = "Paper"
+    } else {
+        document.querySelector(".computer-choice-img").setAttribute("src", "./images/scissors.png")
+        return  selection = "Scissors"
     }
+}
 
-    // game
-    function game(playerSelection, computerSelection) {
+
+function playRound(playerSelection, computerSelection) {
+    if (!(isGameOver())) {
         if (playerSelection === computerSelection) {
-            return `You selected ${playerSelection}. Computer selected ${computerSelection}. It's a tie.`
-        } else if (playerSelection === "rock" && computerSelection === "paper"){
+            winner = "No one wins this round.";
+        } else if (playerSelection === "Rock" && computerSelection === "Paper"){
             computerScore++;
-            return `You selected ${playerSelection}. Computer selected ${computerSelection}. You lose.`
-        } else if (playerSelection === "rock" && computerSelection === "scissors") {
+            document.querySelector(".computer-score").textContent = `${computerScore}`;
+            winner = "Computer wins this round.";
+        } else if (playerSelection === "Rock" && computerSelection === "Scissors") {
             playerScore++;
-            return `You selected ${playerSelection}. Computer selected ${computerSelection}. You Win.`
-        } else if (playerSelection === "paper" && computerSelection === "rock") {
+            document.querySelector(".player-score").textContent = `${playerScore}`;
+            winner = "Player wins this round."
+        } else if (playerSelection === "Paper" && computerSelection === "Rock") {
             playerScore++;
-            return `You selected ${playerSelection}. Computer selected ${computerSelection}. You Win.`
-        } else if (playerSelection === "paper" && computerSelection === "scissors") {
+            document.querySelector(".player-score").textContent = `${playerScore}`;
+            winner = "Player wins this round."
+        } else if (playerSelection === "Paper" && computerSelection === "Scissors") {
             computerScore++;
-            return `You selected ${playerSelection}. Computer selected ${computerSelection}. You lose.`
-        } else if (playerSelection === "scissors" && computerSelection === "rock") {
+            document.querySelector(".computer-score").textContent = `${computerScore}`;
+            winner = "Computer wins this round";
+        } else if (playerSelection === "Scissors" && computerSelection === "Rock") {
             computerScore++;
-            return `You selected ${playerSelection}. Computer selected ${computerSelection}. You lose.`
-        } else if (playerSelection === "scissors" && computerSelection === "paper") {
-            playerScore++;
-            return `You selected ${playerSelection}. Computer selected ${computerSelection}. You win.`
+            document.querySelector(".computer-score").textContent = `${computerScore}`;
+            winner = "Computer wins this round";
+        } else if (playerSelection === "Scissors" && computerSelection === "Paper") {
+            playerScore++
+            document.querySelector(".player-score").textContent = `${playerScore}`;
+            winner = "Player wins this round."
         }
+        result.textContent = `${winner}`;
     }
     
-    // print in the console the roun result
-    console.log(game(playerSelection, computerSelection));
+
+    if (isGameOver()) {
+        if (playerScore > computerScore) {
+            result.textContent = "Player is the Champion!!"
+        } else {
+            result.textContent = "Computer is the Champion"
+        }
+    }
+
+    if (isGameOver()) {
+        playerWeapon.classList.add("invisible");
+        playAgain.classList.remove("invisible");
+    }
 }
 
 
-// Console will tell if the player wins, computer lose or if it is a tie.
-let whoWin;
-if (playerScore > computerScore) {
-    whoWin = "Congratulations, you win!";
-} else if (playerScore < computerScore) {
-    whoWin = "Too bad, computer wins";
-} else {
-    whoWin = "It's a tie. Try to play another game."
+
+function isGameOver() {
+    return computerScore == 5 || playerScore == 5;
 }
-console.log(`After 5 rounds. Player: ${playerScore}. Computer: ${computerScore}. ${whoWin}`)
-
-
-
-
-
 

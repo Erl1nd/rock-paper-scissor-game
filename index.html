@@ -4,11 +4,49 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- QUICKSAND -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/styles.css">
+    <!-- JAVASCRIPT -->
+    <script src="./js/script.js" defer></script>
+
     <title>Rock-Paper-Scissor Game</title>
 </head>
 <body>
-    
-
-    <script src="./js/script.js"></script>
+    <div class="container">
+        <div class="field computer-field">
+            <h1>Computer Score: <span class="computer-score">0</span></h1>
+            <div class="computer-choice">
+                <div class="choice-container">
+                    <img class="computer-choice-img" src="" alt="">
+                </div>
+            </div>
+            <div class="weapon">
+                <button class="btn computer-weapon"><span class="weapon-icon">👊</span> ROCK</button>
+                <button class="btn computer-weapon"><spam class="weapon-icon">✋</spam> PAPER</button>
+                <button class="btn computer-weapon"><span class="weapon-icon">✌</span> SCISSORS</button>
+            </div>
+        </div>
+        <div class="field player-field">
+            <h1>Player Score: <span class="player-score">0</span></h1>
+            <div class="player-choice">
+                <div class="choice-container">
+                    <img class="player-choice-img" src="" alt="">
+                </div>  
+            </div>
+            <div class="weapon player-weapon">
+                <button class="btn rock-btn"><span class="weapon-icon">👊</span> ROCK</button>
+                <button class="btn paper-btn"><spam class="weapon-icon">✋</spam> PAPER</button>
+                <button class="btn scissors-btn"><span class="weapon-icon">✌</span> SCISSORS</button>
+            </div>
+        </div>
+        <div class="result-container">
+            <h1 class="result"></h1>
+            <button class="btn play-again invisible">Play Again</button>
+        </div>
+    </div>     
 </body>
 </html>
